@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Daily Activities and To-Do List</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    #activity-input {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    #add-button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+    }
+
+    #todo-list {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .todo-item {
+      margin-bottom: 10px;
+    }
+
+    .todo-item button {
+      background-color: #f44336;
+      color: white;
+      padding: 5px;
+      font-size: 12px;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Daily Activities and To-Do List</h1>
+
+  <input type="text" id="activity-input" placeholder="Enter your activity">
+  <button id="add-button">Add to List</button>
+
+  <ul id="todo-list"></ul>
+
+  <script>
+    document.getElementById('add-button').addEventListener('click', function() {
+      var input = document.getElementById('activity-input');
+      var activity = input.value;
+
+      if (activity.trim() !== '') {
+        var item = document.createElement('li');
+        item.textContent = activity;
+
+        var deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.addEventListener('click', function() {
+          item.remove();
+        });
+
+        item.appendChild(deleteButton);
+        document.getElementById('todo-list').appendChild(item);
+
+        input.value = '';
+      }
+    });
+  </script>
+</body>
+</html>
